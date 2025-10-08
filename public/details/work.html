@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudhanshu Deshmukh · Professional Experience</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background: radial-gradient(circle at top, #1b1b1b 0%, #060606 70%, #000 100%);
+        color: #f2f2f2;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        padding: 40px clamp(24px, 6vw, 72px) 28px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 6px;
+        color: #4dd7ff;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(34px, 5.6vw, 60px);
+        font-weight: 800;
+      }
+      .subtitle {
+        margin: 0;
+        font-size: clamp(16px, 2vw, 20px);
+        max-width: 780px;
+        color: #d4d4d4;
+        line-height: 1.6;
+      }
+      main {
+        padding: 36px clamp(24px, 6vw, 72px) 72px;
+        display: grid;
+        gap: 40px;
+      }
+      section {
+        background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        padding: clamp(22px, 4vw, 38px);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.4);
+      }
+      section h2 {
+        margin: 0 0 18px;
+        font-size: clamp(20px, 2.8vw, 32px);
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+      }
+      .summary-grid {
+        display: grid;
+        gap: 18px;
+      }
+      .summary-item {
+        display: grid;
+        gap: 6px;
+      }
+      .summary-item strong {
+        font-size: 15px;
+        letter-spacing: 0.8px;
+      }
+      .summary-item span {
+        font-size: 14px;
+        color: #c5c5c5;
+      }
+      .role {
+        display: grid;
+        gap: 12px;
+      }
+      .role + .role {
+        margin-top: 26px;
+        padding-top: 26px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .role header {
+        padding: 0;
+        border: none;
+      }
+      .role-title {
+        font-size: clamp(20px, 2.4vw, 28px);
+        font-weight: 700;
+      }
+      .role-meta {
+        font-size: 14px;
+        color: #9ddcff;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+      ul {
+        margin: 0;
+        padding-left: 22px;
+        line-height: 1.65;
+        color: #d7d7d7;
+      }
+      footer {
+        margin-top: auto;
+        padding: 32px clamp(24px, 6vw, 72px) 44px;
+        font-size: 14px;
+        color: #8c8c8c;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+        transition: background 180ms ease, transform 180ms ease;
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: translateY(-2px);
+      }
+      @media (max-width: 760px) {
+        main {
+          padding-bottom: 56px;
+        }
+        section {
+          padding: 20px;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="eyebrow">Recruiter spotlight</div>
+      <h1>Professional Experience</h1>
+      <p class="subtitle">
+        A multi-role journey across enterprise software, GenAI product development, and automation—delivering measurable outcomes for clients in automotive, real estate, and education domains.
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="summary">
+        <h2 id="summary">Snapshot</h2>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <strong>Software Engineer</strong>
+            <span>RBRICKKS Technology, Pune · May 2025 – Present</span>
+          </div>
+          <div class="summary-item">
+            <strong>AI Intern</strong>
+            <span>igebra.ai · Jun 2024 – May 2025</span>
+          </div>
+          <div class="summary-item">
+            <strong>Software Intern</strong>
+            <span>PhoenixGen Systems Pvt Ltd · Dec 2023 – Jun 2024</span>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="experience">
+        <h2 id="experience">Professional Experience</h2>
+        <article class="role" aria-labelledby="rbricks-title">
+          <header>
+            <div id="rbricks-title" class="role-title">Software Engineer · RBRICKKS Technology</div>
+            <div class="role-meta">Pune, Maharashtra · May 2025 – Present</div>
+          </header>
+          <p>
+            Full-stack engineer building custom enterprise-grade applications and AI-powered automations for clients spanning automotive, real estate, and service operations.
+          </p>
+          <ul>
+            <li>Architect end-to-end enterprise platforms covering discovery, design, development, deployment, and ongoing optimization.</li>
+            <li>Build responsive web and mobile apps with modern stacks, ensuring scalability, security, and performance for production workloads.</li>
+            <li>Design GenAI accelerators that integrate LLMs, prompt pipelines, and intelligent automations to cut delivery timelines.</li>
+            <li>Lead cross-functional collaboration with product, design, QA, and DevOps to achieve on-time launches and stable releases.</li>
+            <li>Implement robust cloud-native deployment strategies with hardened security, observability, and compliance practices.</li>
+          </ul>
+        </article>
+
+        <article class="role" aria-labelledby="igebra-title">
+          <header>
+            <div id="igebra-title" class="role-title">AI Intern · igebra.ai</div>
+            <div class="role-meta">Remote & Pune · Jun 2024 – May 2025</div>
+          </header>
+          <p>
+            Created GenAI-first products that reimagined educational content creation, recommendation, and interactive learning for a global audience.
+          </p>
+          <ul>
+            <li>Designed and shipped production-ready GenAI apps using GPT, Claude, and open-source models for curriculum generation and student support.</li>
+            <li>Built AI-driven content pipelines that increased platform reach and learner engagement by 30% across pilot cohorts.</li>
+            <li>Implemented analytics dashboards and feedback loops to iteratively refine model output quality and personalization.</li>
+            <li>Deployed Next.js + TypeScript frontends via Vercel V0, leveraging edge functions and serverless architectures for low-latency experiences.</li>
+            <li>Practiced agile rituals—sprint planning, stand-ups, retros—to deliver incremental value while meeting aggressive timelines.</li>
+          </ul>
+        </article>
+
+        <article class="role" aria-labelledby="phoenix-title">
+          <header>
+            <div id="phoenix-title" class="role-title">Software Intern · PhoenixGen Systems Pvt Ltd</div>
+            <div class="role-meta">Pune, Maharashtra · Dec 2023 – Jun 2024</div>
+          </header>
+          <p>
+            Focused on GenAI integrations, FlutterFlow front-ends, and Docker-driven DevOps to accelerate delivery of intelligent automation suites.
+          </p>
+          <ul>
+            <li>Integrated custom GenAI models and APIs for content automation, analytics, and workflow acceleration across enterprise verticals.</li>
+            <li>Reduced app load times by 40% and boosted user engagement by 25% via FlutterFlow optimizations and UX refinements.</li>
+            <li>Containerized every service with Docker, enforced versioned environments, and improved cross-team consistency by 50%.</li>
+            <li>Authored reusable Dockerfiles, leveraging multi-stage builds and caching strategies to cut build times by 20%.</li>
+            <li>Established CI/CD pipelines and monitoring routines that improved deployment cadence and platform reliability.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section aria-labelledby="competencies">
+        <h2 id="competencies">Key Technical Competencies</h2>
+        <ul>
+          <li>Generative AI, LLM integration, prompt engineering, and ML model fine-tuning for production use-cases.</li>
+          <li>Full-stack web and mobile development across React, Next.js, Node.js/Express, React Native, FlutterFlow, and TypeScript.</li>
+          <li>Cloud-native engineering with Docker, CI/CD pipelines, Vercel, AWS, and serverless architectures.</li>
+          <li>Agile collaboration, stakeholder communication, and requirements discovery for enterprise engagements.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2025 Sudhanshu Deshmukh · Professional Experience</span>
+    </footer>
+  </body>
+</html>

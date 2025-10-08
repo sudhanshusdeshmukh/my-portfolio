@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudhanshu Deshmukh · Education Showcase</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background: radial-gradient(circle at top left, #1f1f1f 0%, #0c0c0c 65%, #000 100%);
+        color: #f5f5f5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        padding: 36px clamp(24px, 5vw, 64px) 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 6px;
+        color: #ff4f70;
+        font-size: 12px;
+        margin-bottom: 12px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(32px, 5vw, 56px);
+        font-weight: 800;
+      }
+      .subtitle {
+        margin: 0;
+        font-size: clamp(16px, 2vw, 20px);
+        color: #d2d2d2;
+        max-width: 720px;
+        line-height: 1.6;
+      }
+      main {
+        padding: 32px clamp(24px, 5vw, 64px) 64px;
+        display: grid;
+        gap: 40px;
+      }
+      section {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        padding: clamp(20px, 4vw, 36px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      }
+      section h2 {
+        margin: 0 0 16px;
+        font-size: clamp(20px, 3vw, 28px);
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+      .summary-grid {
+        display: grid;
+        gap: 18px;
+      }
+      .summary-item {
+        display: grid;
+        gap: 6px;
+      }
+      .summary-item strong {
+        letter-spacing: 0.8px;
+        font-size: 15px;
+      }
+      .summary-item span {
+        color: #c8c8c8;
+        font-size: 14px;
+      }
+      .detail-block + .detail-block {
+        margin-top: 28px;
+      }
+      .detail-block h3 {
+        margin: 0 0 12px;
+        font-size: clamp(18px, 2.4vw, 24px);
+        letter-spacing: 1px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        line-height: 1.7;
+        color: #d8d8d8;
+      }
+      footer {
+        margin-top: auto;
+        padding: 28px clamp(24px, 5vw, 64px) 40px;
+        font-size: 14px;
+        color: #8c8c8c;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+        transition: background 180ms ease, transform 180ms ease;
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+      @media (max-width: 720px) {
+        header {
+          padding-top: 28px;
+        }
+        section {
+          padding: 20px;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="eyebrow">Recruiter spotlight</div>
+      <h1>Education Portfolio</h1>
+      <p class="subtitle">
+        Academic journey that blends deep Artificial Intelligence expertise with hands-on data science specialization and consistently strong performance across every milestone.
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="summary">
+        <h2 id="summary">Snapshot</h2>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <strong>B.Tech in Artificial Intelligence</strong>
+            <span>GH Raisoni College of Engineering and Management · CGPA 8.23/10 · 2020 – 2024</span>
+          </div>
+          <div class="summary-item">
+            <strong>Honors in Data Science</strong>
+            <span>GH Raisoni College of Engineering and Management · 2022 – 2024</span>
+          </div>
+          <div class="summary-item">
+            <strong>OM Satya Junior College, Bhandara</strong>
+            <span>Higher Secondary Certificate · 84.60% · 2020</span>
+          </div>
+          <div class="summary-item">
+            <strong>St. Mary's English School, Pusad</strong>
+            <span>Secondary School Certificate · 84.80% · 2018</span>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="higher-education">
+        <h2 id="higher-education">Educational Background</h2>
+        <div class="detail-block">
+          <h3>Higher Education</h3>
+          <ul>
+            <li><strong>Bachelor of Technology in Artificial Intelligence</strong> — GH Raisoni College of Engineering and Management (2020 – 2024), CGPA 8.23/10</li>
+            <li>Specialized in machine learning, deep learning, NLP, and computer vision while mastering tools such as TensorFlow, PyTorch, and scikit-learn</li>
+            <li>Completed multiple production-focused AI projects demonstrating real-world problem solving and deployment readiness</li>
+            <li>Developed strong programming foundations across Python, Java, and C++</li>
+            <li><strong>Honors in Data Science</strong> — GH Raisoni College of Engineering and Management (2022 – 2024)</li>
+            <li>Built advanced capabilities in statistical analysis, predictive modeling, data visualization, and data engineering</li>
+            <li>Worked with big data stacks, ETL workflows, and analytics technologies while mastering Pandas, NumPy, and SQL</li>
+            <li>Completed coursework in business analytics, data mining, and decision intelligence</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h3>Secondary Education</h3>
+          <ul>
+            <li><strong>Higher Secondary Certificate (Class XII)</strong> — OM Satya Junior College, Bhandara (2020), 84.60%</li>
+            <li>Built a strong STEM foundation with top performance across mathematics and science subjects</li>
+            <li><strong>Secondary School Certificate (Class X)</strong> — St. Mary's English School, Pusad (2018), 84.80%</li>
+            <li>Consistent academic excellence with emphasis on analytical thinking and problem solving</li>
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="highlights">
+        <h2 id="highlights">Key Academic Highlights</h2>
+        <ul>
+          <li>Maintained performance above 84% through every academic milestone while completing dual specialization in AI and Data Science</li>
+          <li>Four continuous years of deep technical immersion across algorithms, software engineering, and emerging AI technologies</li>
+          <li>Demonstrated ability to translate academic insights into industry-ready solutions through capstone and independent projects</li>
+          <li>Strong grounding in mathematics, statistics, and computing fundamentals that power applied AI problem solving</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2025 Sudhanshu Deshmukh · Education Showcase</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudhanshu Deshmukh · Video Gallery</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background: radial-gradient(circle at 20% -10%, #2d2d2d 0%, #0b0b0b 60%, #000 100%);
+        color: #f5f5f5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        padding: 40px clamp(24px, 6vw, 72px) 28px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 6px;
+        color: #54ffc0;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(34px, 5.6vw, 58px);
+        font-weight: 800;
+      }
+      .subtitle {
+        margin: 0;
+        font-size: clamp(16px, 2vw, 20px);
+        color: #d1d1d1;
+        max-width: 780px;
+        line-height: 1.6;
+      }
+      main {
+        padding: 28px clamp(24px, 5vw, 56px) 56px;
+        display: grid;
+        gap: 32px;
+      }
+      section {
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        padding: clamp(18px, 3.4vw, 32px);
+        box-shadow: 0 26px 68px rgba(0, 0, 0, 0.42);
+      }
+      section h2 {
+        margin: 0 0 12px;
+        font-size: clamp(18px, 2.4vw, 28px);
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+      }
+      .section-subtitle {
+        margin: 0 0 18px;
+        color: rgba(223, 223, 223, 0.86);
+        line-height: 1.4;
+        font-size: clamp(13px, 1.6vw, 15px);
+      }
+      .video-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+      .video-tile {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-radius: 14px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(0, 0, 0, 0.32);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+      .video-tile:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 44px rgba(0, 0, 0, 0.32);
+      }
+      .video-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+      .video-wrapper video {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        background: #000;
+        filter: brightness(0.84) contrast(1.05);
+      }
+      .play-overlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
+        color: rgba(255, 255, 255, 0.85);
+        font-size: clamp(20px, 3vw, 28px);
+        border: none;
+        opacity: 0;
+        transition: opacity 160ms ease;
+      }
+      .video-wrapper:hover .play-overlay,
+      .video-wrapper:focus-within .play-overlay,
+      .video-tile:focus-within .play-overlay {
+        opacity: 1;
+      }
+      .video-meta {
+        padding: 0 clamp(14px, 2.6vw, 18px) clamp(14px, 2.6vw, 20px);
+        display: grid;
+        gap: 8px;
+      }
+      .video-meta h3 {
+        margin: 0;
+        font-size: clamp(16px, 1.9vw, 20px);
+        letter-spacing: 0.9px;
+        text-transform: uppercase;
+      }
+      .video-meta p {
+        margin: 0;
+        color: rgba(223, 223, 223, 0.86);
+        line-height: 1.4;
+        font-size: clamp(13px, 1.6vw, 15px);
+      }
+      .video-wrapper.placeholder {
+        aspect-ratio: 16 / 9;
+        display: grid;
+        place-items: center;
+        border: 1px dashed rgba(255, 255, 255, 0.18);
+        background: rgba(0, 0, 0, 0.28);
+      }
+      .coming-soon {
+        font-size: clamp(13px, 1.6vw, 15px);
+        color: rgba(255, 255, 255, 0.72);
+        text-align: center;
+        padding: 0 14px;
+      }
+      .featured-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-height: calc(100vh - 160px);
+      }
+      .featured-section .video-gallery {
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        grid-auto-rows: 1fr;
+        align-items: stretch;
+        gap: 18px;
+      }
+      .featured-section .video-tile {
+        justify-content: space-between;
+      }
+      .featured-section .video-meta {
+        padding-bottom: 12px;
+      }
+      @media (max-width: 1200px) {
+        .featured-section .video-gallery {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+      }
+      footer {
+        margin-top: auto;
+        padding: 32px clamp(24px, 6vw, 72px) 44px;
+        font-size: 14px;
+        color: #8c8c8c;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+        transition: background 180ms ease, transform 180ms ease;
+      }
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: translateY(-2px);
+      }
+      @media (max-width: 760px) {
+        main {
+          gap: 28px;
+        }
+        section {
+          padding: 18px;
+        }
+        .featured-section .video-gallery {
+          grid-template-columns: 1fr;
+        }
+        .featured-section {
+          min-height: auto;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="eyebrow">Recruiter spotlight</div>
+      <h1>Video Gallery</h1>
+      <p class="subtitle">
+        Curated walkthroughs and demos highlighting enterprise builds, GenAI workflows, and polished product experiences delivered by Sudhanshu Deshmukh.
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="featured-videos" class="featured-section">
+        <h2 id="featured-videos">Featured Walkthroughs</h2>
+        <div class="video-gallery" role="list">
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper">
+              <video
+                src="https://ljivdckgtppiqlncycik.supabase.co/storage/v1/object/public/portfolio-videos/AI%20TUTOR.mp4"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                autoplay
+              ></video>
+              <button class="play-overlay" type="button" aria-hidden="true">▶</button>
+            </div>
+            <header class="video-meta">
+              <h3>AI Tutor</h3>
+              <p>Adaptive learning companion blending LLM assessments with curriculum-aligned nudges for every learner.</p>
+            </header>
+          </article>
+
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper">
+              <video
+                src="https://ljivdckgtppiqlncycik.supabase.co/storage/v1/object/public/portfolio-videos/Image%20Generator.mp4"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                autoplay
+              ></video>
+              <button class="play-overlay" type="button" aria-hidden="true">▶</button>
+            </div>
+            <header class="video-meta">
+              <h3>Image Generator</h3>
+              <p>Conversational tool that turns prompts into production-ready visuals using on-device diffusion pipelines.</p>
+            </header>
+          </article>
+
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper">
+              <video
+                src="https://ljivdckgtppiqlncycik.supabase.co/storage/v1/object/public/portfolio-videos/Art%20and%20Craft%20Legacy.mp4"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                autoplay
+                poster="../assets/Art%20and%20Craft%20Legacy%20Poster.png"
+              ></video>
+              <button class="play-overlay" type="button" aria-hidden="true">▶</button>
+            </div>
+            <header class="video-meta">
+              <h3>Art &amp; Craft Legacy</h3>
+              <p>AI-generated gallery concept crafted to demonstrate my generative storytelling and AR-inspired experience design workflow.</p>
+            </header>
+          </article>
+
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper">
+              <video
+                src="https://ljivdckgtppiqlncycik.supabase.co/storage/v1/object/public/portfolio-videos/Agriculture%20and%20Natural%20Beauty.mp4"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                autoplay
+                poster="../assets/Agriculture%20and%20Natural%20Beauty%20Poster.png"
+              ></video>
+              <button class="play-overlay" type="button" aria-hidden="true">▶</button>
+            </div>
+            <header class="video-meta">
+              <h3>Agriculture &amp; Natural Beauty</h3>
+              <p>AI-generated smart-farming narrative showcasing my ability to choreograph agritech insights with cinematic generative tooling.</p>
+            </header>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="project-library">
+        <h2 id="project-library">Project Library</h2>
+        <p class="section-subtitle">Explore every shipped experience, organized by domain and impact. Click any project to dive into full-screen demos with commentary.</p>
+
+        <div class="video-gallery" role="list">
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper">
+              <video
+                src="https://ljivdckgtppiqlncycik.supabase.co/storage/v1/object/public/portfolio-videos/VV1.mp4"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                autoplay
+                poster="../assets/20250105_205344.png"
+              ></video>
+              <button class="play-overlay" type="button" aria-hidden="true">▶</button>
+            </div>
+            <header class="video-meta">
+              <h3>Portfolio Overview</h3>
+              <p>High-impact highlight reel introducing signature builds, outcomes, and the product mindset powering them.</p>
+            </header>
+          </article>
+
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper">
+              <video
+                src="https://ljivdckgtppiqlncycik.supabase.co/storage/v1/object/public/portfolio-videos/Modern%20Telangana.mp4"
+                preload="metadata"
+                muted
+                loop
+                playsinline
+                autoplay
+                poster="../assets/Modern%20Telangana%20Poster.png"
+              ></video>
+              <button class="play-overlay" type="button" aria-hidden="true">▶</button>
+            </div>
+            <header class="video-meta">
+              <h3>Modern Telangana</h3>
+              <p>AI-generated civic experience that spotlights how I blend data-driven storytelling with generative design systems.</p>
+            </header>
+          </article>
+
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper placeholder">
+              <div class="coming-soon">Add your next project walkthrough here.</div>
+            </div>
+            <header class="video-meta">
+              <h3>Coming Soon</h3>
+              <p>Record and drop new demos to keep this gallery fresh for recruiters and collaborators.</p>
+            </header>
+          </article>
+
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper placeholder">
+              <div class="coming-soon">Upload a showcase video to replace this slot.</div>
+            </div>
+            <header class="video-meta">
+              <h3>Reserve Slot</h3>
+              <p>Use this block to highlight recently shipped features or in-progress initiatives.</p>
+            </header>
+          </article>
+
+          <article class="video-tile" role="listitem">
+            <div class="video-wrapper placeholder">
+              <div class="coming-soon">Keep expanding your library.</div>
+            </div>
+            <header class="video-meta">
+              <h3>Future Drop</h3>
+              <p>Stay consistent—recruiters love seeing continual growth across disciplines.</p>
+            </header>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const tiles = document.querySelectorAll('.video-tile');
+      const videos = document.querySelectorAll('.video-tile video');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (!(video instanceof HTMLVideoElement)) return;
+            if (entry.isIntersecting) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      const toggleMuteState = (video, shouldMute) => {
+        video.muted = shouldMute;
+        video.defaultMuted = shouldMute;
+        video.volume = shouldMute ? 0 : 1;
+        if (!shouldMute) {
+          video.play().catch(() => {});
+        }
+      };
+
+      const enterFullscreen = async (element) => {
+        if (!element) return;
+        if (element.requestFullscreen) {
+          await element.requestFullscreen();
+        } else if (element.webkitEnterFullscreen) {
+          element.webkitEnterFullscreen();
+        }
+      };
+
+      const exitFullscreen = () => {
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen();
+          return true;
+        }
+        return false;
+      };
+
+      let activeVideo = null;
+      const handleFullscreenChange = () => {
+        if (!document.fullscreenElement && activeVideo) {
+          toggleMuteState(activeVideo, true);
+          activeVideo.pause();
+          activeVideo.currentTime = 0;
+          activeVideo = null;
+        }
+      };
+
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+      tiles.forEach((tile) => {
+        const video = tile.querySelector('video');
+        if (!video) return;
+
+        tile.addEventListener('click', async () => {
+          activeVideo = video;
+          toggleMuteState(video, false);
+          await enterFullscreen(video);
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        });
+      });
+
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          exitFullscreen();
+        }
+      });
+    </script>
+
+    <footer>
+      <span>© 2025 Sudhanshu Deshmukh · Video Gallery</span>
+    </footer>
+  </body>
+</html>
